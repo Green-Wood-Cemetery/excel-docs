@@ -56,7 +56,7 @@ jobs:
       run: |
            cd ${{ env.DEVOPS_DIR }}
            for jsonfile in ${{ env.JSON_DIR }}/*.json ; do
-              python clean_data.py -file ${{ env.JSON_DIR }}/$jsonfile -index ${{ env.ES_INDEX }}
+              python clean_data.py -file $jsonfile -index ${{ env.ES_INDEX }}
            done 
       shell: sh
 
@@ -64,6 +64,6 @@ jobs:
       run: |
            cd ${{ env.DEVOPS_DIR }}
            for jsonfile in ${{ env.JSON_DIR }}/*.json ; do
-              python import_data.py -file ${{ env.JSON_DIR }}/$jsonfile -index ${{ env.ES_INDEX }}
+              python import_data.py -file $jsonfile -index ${{ env.ES_INDEX }}
            done 
       shell: sh
