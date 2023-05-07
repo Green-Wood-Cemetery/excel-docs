@@ -43,5 +43,5 @@ jobs:
     - name: run convert script
       run: |
            cd ${{ env.DEVOPS_DIR }} 
-           ./single_test.sh
+           ./single.test.sh
       shell: sh
