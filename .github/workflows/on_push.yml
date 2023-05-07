@@ -1,0 +1,46 @@
+name: On Push Run
+
+on: push
+
+env:
+  DEVOPS_DIR: python-to-elastic
+
+jobs:
+  process_files:
+    name: Process Files
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout of last commit
+      uses: actions/checkout@v3
+      with:
+        fetch_depth: 0
+
+    - name: get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v35
+
+    - name: check-out python to elastic repository
+      uses: actions/checkout@v3
+      with:
+        repository: WalterPaixaoCortes/python-to-elastic
+        token: ${{ secrets.GITHUB_TOKEN }}
+        path: ${{ env.DEVOPS_DIR }}
+
+    - name: copy changed files to devops
+      run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            cp $file ${{ env.DEVOPS_DIR }}/
+          done
+      shell: sh
+
+    - name: walk to path
+      run: cd ${{ env.DEVOPS_DIR }}
+      shell: sh
+
+    - name: install requirements
+      run: pip install -r requirements.txt
+      shell: sh
+
+    - name: run convert script
+      run: ./single_test.sh
+      shell: sh
