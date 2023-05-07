@@ -5,6 +5,9 @@ on: push
 env:
   DEVOPS_DIR: python-to-elastic
   ES_INDEX: test-auto
+  EXCEL_DIR: excel
+  JSON_DIR: json
+  PY_REPO: WalterPaixaoCortes/python-to-elastic
 
 jobs:
   process_files:
@@ -23,7 +26,7 @@ jobs:
     - name: check-out python to elastic repository
       uses: actions/checkout@v3
       with:
-        repository: WalterPaixaoCortes/python-to-elastic
+        repository: ${{ env.PY_REPO }}
         ref: main
         token: ${{ secrets.GH_PAT }}
         path: ${{ env.DEVOPS_DIR }}
@@ -31,7 +34,7 @@ jobs:
     - name: copy changed files to devops
       run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            cp $file ${{ env.DEVOPS_DIR }}/excel/
+            cp $file ${{ env.DEVOPS_DIR }}/${{ env.EXCEL_DIR }}/
           done
       shell: sh
 
@@ -45,14 +48,22 @@ jobs:
       run: |
            cd ${{ env.DEVOPS_DIR }}
            for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-             python excel_to_es_json.py --no-geocode -file excel/$file
+             python excel_to_es_json.py --no-geocode -file ${{ env.EXCEL_DIR }}/$file
            done
       shell: sh
 
     - name: clean data
       run: |
            cd ${{ env.DEVOPS_DIR }}
-           for jsonfile in json/*.json ; do
-              python clean_data.py -file json/$jsonfile -index ${{ env.ES_INDEX }}
+           for jsonfile in ${{ env.JSON_DIR }}/*.json ; do
+              python clean_data.py -file ${{ env.JSON_DIR }}/$jsonfile -index ${{ env.ES_INDEX }}
+           done 
+      shell: sh
+
+    - name: import data
+      run: |
+           cd ${{ env.DEVOPS_DIR }}
+           for jsonfile in ${{ env.JSON_DIR }}/*.json ; do
+              python import_data.py -file ${{ env.JSON_DIR }}/$jsonfile -index ${{ env.ES_INDEX }}
            done 
       shell: sh
