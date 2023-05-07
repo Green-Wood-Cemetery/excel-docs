@@ -44,6 +44,6 @@ jobs:
       run: |
            cd ${{ env.DEVOPS_DIR }} 
            for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-             echo excel/$file
+             python excel_to_es_json.py --no-geocode -file excel/$file
            done
       shell: sh
