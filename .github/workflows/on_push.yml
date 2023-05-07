@@ -53,6 +53,6 @@ jobs:
       run: |
            cd ${{ env.DEVOPS_DIR }}
            for jsonfile in json/*.json ; do
-              python clean_data.py -file json/$jsonfile -index ${{ ES_INDEX }}
+              python clean_data.py -file json/$jsonfile -index ${{ env.ES_INDEX }}
            done 
       shell: sh
