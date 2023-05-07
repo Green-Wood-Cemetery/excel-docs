@@ -20,7 +20,7 @@ jobs:
       uses: tj-actions/changed-files@v35
 
     - name: check-out python to elastic repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
       with:
         repository: WalterPaixaoCortes/python-to-elastic
         token: ${{ secrets.GITHUB_TOKEN }}
