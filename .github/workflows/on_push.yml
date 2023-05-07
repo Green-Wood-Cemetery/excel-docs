@@ -42,8 +42,14 @@ jobs:
 
     - name: run convert script
       run: |
-           cd ${{ env.DEVOPS_DIR }} 
+           cd ${{ env.DEVOPS_DIR }}
            for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
              python excel_to_es_json.py --no-geocode -file excel/$file
            done
+      shell: sh
+
+    - name: load data
+      run: |
+           cd ${{ env.DEVOPS_DIR }}
+           ls json/*
       shell: sh
