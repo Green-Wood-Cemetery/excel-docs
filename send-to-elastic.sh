@@ -1,3 +1,3 @@
 echo "Updating modified files on elastic search..."
-git commit -m "manual update"
-git push origin
+git commit -am "manual update"
+git push origin main:main
