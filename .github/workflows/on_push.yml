@@ -30,7 +30,7 @@ jobs:
     - name: copy changed files to devops
       run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            cp $file ${{ env.DEVOPS_DIR }}/
+            cp $file ${{ env.DEVOPS_DIR }}/excel/
           done
       shell: sh
 
@@ -43,5 +43,7 @@ jobs:
     - name: run convert script
       run: |
            cd ${{ env.DEVOPS_DIR }} 
-           ./single.test.sh
+           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+             echo excel/$file
+           done
       shell: sh
