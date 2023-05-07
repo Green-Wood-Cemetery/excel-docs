@@ -34,14 +34,14 @@ jobs:
           done
       shell: sh
 
-    - name: walk to path
-      run: cd ${{ env.DEVOPS_DIR }}
-      shell: sh
-
     - name: install requirements
-      run: pip install -r requirements.txt
+      run: |
+           cd ${{ env.DEVOPS_DIR }} 
+           pip install -r requirements.txt
       shell: sh
 
     - name: run convert script
-      run: ./single_test.sh
+      run: |
+           cd ${{ env.DEVOPS_DIR }} 
+           ./single_test.sh
       shell: sh
