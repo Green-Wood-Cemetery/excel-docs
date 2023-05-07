@@ -4,6 +4,7 @@ on: push
 
 env:
   DEVOPS_DIR: python-to-elastic
+  ES_INDEX: test-auto
 
 jobs:
   process_files:
@@ -13,7 +14,7 @@ jobs:
     - name: checkout of last commit
       uses: actions/checkout@v3
       with:
-        fetch_depth: 0
+        fetch-depth: 0
 
     - name: get changed files
       id: changed-files
@@ -48,8 +49,10 @@ jobs:
            done
       shell: sh
 
-    - name: load data
+    - name: clean data
       run: |
            cd ${{ env.DEVOPS_DIR }}
-           ls json/*
+           for jsonfile in json/*.json ; do
+              python clean_data.py -file json/$jsonfile -index ${{ ES_INDEX }}
+           done 
       shell: sh
