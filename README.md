@@ -69,17 +69,32 @@ cd Documents
 #### Step 4.3: Clone the repository
 1. In the Git Bash terminal, type the following command and press Enter:
 ```
-git clone https://github.com/WalterPaixaoCortes/sample-docs.git
+git clone https://github.com/Green-Wood-Cemetery/excel-docs.git
 ```
 2. This will initiate the cloning process and create a local copy of the repository in the current directory.
 
-Step 4: Verify the repository is cloned successfully
+#### Step 4.4: Verify the repository is cloned successfully
 1. After the cloning process is completed, navigate to the cloned repository's directory using the "cd" command.
 ```
-cd sample-docs
+cd excel-docs
 ```
 2. Type the following command and press Enter to see the repository's contents:
 ```
 ls
 ```
 3. This will display the list of files and directories in the repository.
+
+### Step 5: How to use in your daily activities
+
+#### Preparing to make changes on the files
+1. Before start with the changes, go to Windows Explorer and navigate to the folder previous to the excel-docs folder
+![Navigate to the folder](images/001-folder.png)
+
+#### Sending changes
+1. Go to the folder excel-docs and make the changes on Excel files.
+2. After finished with the changes, go to Windows Explorer and navigate to the folder previous to the excel-docs folder
+![Navigate to the folder](images/001-folder.png)
+3. Right-click on the folder and find the option "GitExt Commit", and then click on it
+![Option to click](images/002-menu.png)
+4. Write a message on the box, and then just click Commit and Push
+![Pushing changes](images/003-option.png)
