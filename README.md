@@ -89,12 +89,19 @@ ls
 #### Preparing to make changes on the files
 1. Before start with the changes, go to Windows Explorer and navigate to the folder previous to the excel-docs folder
 ![Navigate to the folder](images/001-folder.png)
+2. Right-click on the folder and find the option "GitExt Extensions", and then open the menu and select the Pull option
+![Option to click](images/004-pull.png)
+3. Click on the Pull button and wait
+![Click on Pull Button](images/005-pull2.png)
+4. It is done!
+![Synch is done!](images/006-pull3.png)
 
+ 
 #### Sending changes
 1. Go to the folder excel-docs and make the changes on Excel files.
 2. After finished with the changes, go to Windows Explorer and navigate to the folder previous to the excel-docs folder
 ![Navigate to the folder](images/001-folder.png)
-3. Right-click on the folder and find the option "GitExt Commit", and then click on it
+1. Right-click on the folder and find the option "GitExt Commit", and then click on it
 ![Option to click](images/002-menu.png)
-4. Write a message on the box, and then just click Commit and Push
+1. Write a message on the box, and then just click Commit and Push
 ![Pushing changes](images/003-option.png)
