@@ -123,7 +123,7 @@ This script should be used when you want to send your changes to Github and then
 ![Navigate to the folder](images/001-folder.png)
 2. Double-click on the send_to_github.bat file
 3. It is done!
-![Synch is done!](images/008-push.png)
+![Synch is done!](images/007-pull3.png)
 
  
 #### Sending changes
@@ -132,4 +132,4 @@ This script should be used when you want to send your changes to Github and then
 ![Navigate to the folder](images/001-folder.png)
 3. Double-click on the git_pull.bat file
 4. It is done!
-![Synch is done!](images/007-pull3.png)
+![Synch is done!](images/009-push.png)
