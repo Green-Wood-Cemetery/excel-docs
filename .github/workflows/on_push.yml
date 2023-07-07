@@ -4,7 +4,7 @@ on: push
 
 env:
   DEVOPS_DIR: python-to-elastic
-  ES_INDEX: test-auto
+  ES_INDEX: interments
   EXCEL_DIR: excel
   JSON_DIR: json
   PY_REPO: WalterPaixaoCortes/python-to-elastic
